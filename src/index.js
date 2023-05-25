@@ -1,8 +1,16 @@
 const http = require('http')
+const users = require('./mocks/users')
+const server = http.createServer((req, res)=>{
+  console.log(`Request method ${req.method} | Endpoint ${req.url}`)
 
-const server = http.createServer((request, response) => {
-  response.writeHead(200, {'Content-Type' : 'text/html'});
-  response.end('<h1>Hello Wordl!</h1>')
+  if(req.url === '/users' && req.method === 'GET'){
+    res.writeHead(200, {'Content-Type': 'application/json'})
+  res.end(JSON.stringify(users))
+  }else{
+    res.writeHead(404, {'Content-Type': 'text/html'})
+res.end(`Cannot ${req.method} ${req.url}`)
+  }
+
 })
 
-server.listen(3000,() => console.log('Server funcionando em: http://localhost:3000'))
+server.listen(3000, console.log('Server funcinando em http://localhost:3000'))
