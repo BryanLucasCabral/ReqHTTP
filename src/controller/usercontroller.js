@@ -1,7 +1,7 @@
 const users = require('../mocks/users')
-module.exports = { 
+module.exports = {
   listUsers(req, res){
-    res.writeHead(200,{'Content-Type' : 'aplication.json'})
+    res.writeHead(200, {'content-type': 'application/json'})
     res.end(JSON.stringify(users))
   }
 }
