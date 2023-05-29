@@ -12,7 +12,6 @@ const server = http.createServer((req, res) => {
     pathname = `/${splitEndpoint[0]}/:id`
     id = splitEndpoint[1];
   }
-  console.log(splitEndpoint)
 
   const route = routes.find((routeOBJ) => (
     routeOBJ.endpoint === pathname && routeOBJ.method === req.method
