@@ -54,8 +54,13 @@ module.exports = {
     res.send(200, {id, name})
   },
   deleteUser(req, res){
-    const {id} = req.params
-    const {name} = req.body
+    let { id} = req.params
+    id = Number(id)
+
+
+    users = users.filter((user) => user.id !== id)
+
+    res.send(200, {deleted : true})
     
   }
 }
